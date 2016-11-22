@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html land="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Sidebuy Tech Assignment</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+</head>
+<body>
+  <h2 class="title">SIDEBUY TECH ASSIGNMENT</h2>
+
+  <form class="form" action="/ranking" method="POST">
+    <span class="input input-minoru">
+      <input class="input_field input_field-yoko" type="text" name="provider" />
+      <label class="input_label input_label-yoko">
+        <span class="input_label-content input_label-content-yoko">Provider</span>
+      </label>
+    </span>
+    <span class="input input-minoru">
+      <input class="input_field input_field-yoko" type="text" name="country" />
+      <label class="input_label input_label-yoko">
+        <span class="input_label-content input_label-content-yoko">Country</span>
+      </label>
+    </span>
+    <span class="input input-minoru">
+      <input class="input_field input_field-yoko" type="text" name="price" />
+      <label class="input_label input_label-yoko">
+        <span class="input_label-content input_label-content-yoko">Price</span>
+      </label>
+    </span>
+    <span class="input input-minoru">
+      <input class="input_field input_field-yoko" type="text" name="ratings" />
+      <label class="input_label input_label-yoko">
+        <span class="input_label-content input_label-content-yoko">Ratings</span>
+      </label>
+    </span>
+    <span class="input input-minoru">
+      <input class="input_field input_field-yoko" type="text" name="category" />
+      <label class="input_label input_label-yoko">
+        <span class="input_label-content input_label-content-yoko">Category</span>
+      </label>
+    </span>
+
+    <button class="btn" type="submit">Search</button>
+  </form>
+  
+  <!-- JavaScript file for adding input-filled class to input when input is not empty -->
+  <script src="js/classie.js"></script>
+  <script>
+    (function() {
+      if (!String.prototype.trim) {
+        (function() {
+          // Make sure we trim BOM and NBSP
+          var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+          String.prototype.trim = function() {
+            return this.replace(rtrim, '');
+          };
+        })();
+      }
+
+      [].slice.call( document.querySelectorAll( 'input.input_field' ) ).forEach( function( inputEl ) {
+        if( inputEl.value.trim() !== '' ) {
+          classie.add( inputEl.parentNode, 'input-filled' );
+        }
+
+        // events:
+        inputEl.addEventListener( 'focus', onInputFocus );
+        inputEl.addEventListener( 'blur', onInputBlur );
+      } );
+
+      function onInputFocus( ev ) {
+        classie.add( ev.target.parentNode, 'input-filled' );
+      }
+
+      function onInputBlur( ev ) {
+        if( ev.target.value.trim() === '' ) {
+          classie.remove( ev.target.parentNode, 'input-filled' );
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
